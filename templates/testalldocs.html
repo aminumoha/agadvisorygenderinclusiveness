@@ -1,0 +1,59 @@
+<!doctype html>
+<title>Agricultural Advisory Gender sensitivity Tester - home</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+</script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+</script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js">
+</script>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<div class="content" style="padding-top:5px;">
+       <div style="text-align:center; float:left; width:6%">
+         <img src="{{ url_for('static', filename='images/aau_logo.png') }}" height="80" width="70">
+     </div>
+    <div style="text-align:center; float:right; width:13%">
+        <img src="{{ url_for('static', filename='images/ciat_logo.png') }}" height="80" width="120">
+    </div>
+
+    <div style="text-align:center; width:81%">
+  <h2 style="text-align:center; font-weight:bold">Mining Scientific Literature on Agricultural Advisory for Gender Inclusiveness  </h2>
+    </div>
+
+<nav>
+    <ul>
+        <li ><a  class="fa fa-home" href="{{ url_for('index') }}">&nbsp;Home</a></li>
+        <li ><a class="fa fa-upload" href="{{ url_for('upload_file') }}">&nbsp;Upload and Test an Article</a></li>
+        <li ><a class="fa fa-download " href="{{ url_for('download_all') }}">&nbsp;Download Gender Inclusive Files</a></li>
+         <li ><a class="fa fa-check" href="{{ url_for('test_files') }}">&nbsp;Test All Downloaded Files</a></li>
+    </ul>
+</nav>
+
+<h4>Similarity Index of Downloaded Articles with Gender Inclusive Docs</h4>
+        <table class="table table-striped" id ="similarityTable">
+            <thead class="thead-dark">
+              <tr>
+                  <th>File Name</th>
+                  <th>Path</th>
+                  <th>Similarity Index</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for file in value %}
+            <tr>
+                <td>{{ file.split('*')[1] }} </td>
+                <td><a href="/return-files-from-source/{{ file.split('*')[0] }}" target="blank"><button class='btn btn-default'>download</button></a></td>
+                <td>{{ file.split('*')[2] }}</td>
+            </tr>
+         {% endfor %}
+            </tbody>
+        </table>
+    <script>
+        $('#similarityTable').DataTable();
+    </script>
+</div>

@@ -1,0 +1,79 @@
+<!doctype html>
+    <title>Agricultural Advisory Gender sensitivity Tester - Upload new file</title>
+<link href='https://fonts.googleapis.com/css family=Pacifico' rel= stylesheet type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+ <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<div class="content" style="padding-top:5px;">
+        <div style="text-align:center; float:left; width:6%">
+         <img src="{{ url_for('static', filename='images/aau_logo.png') }}" height="80" width="70">
+     </div>
+    <div style="text-align:center; float:right; width:13%">
+        <img src="{{ url_for('static', filename='images/ciat_logo.png') }}" height="80" width="120">
+    </div>
+
+    <div style="text-align:center; width:81%">
+  <h2 style="text-align:center; font-weight:bold">Mining Scientific Literature on Agricultural Advisory for Gender Inclusiveness  </h2>
+    </div>
+<nav>
+    <ul>
+        <li ><a  class="fa fa-home" href="{{ url_for('index') }}">&nbsp;Home</a></li>
+        <li ><a class="fa fa-upload" href="{{ url_for('upload_file') }}">&nbsp;Upload and Test an Article</a></li>
+        <li ><a class="fa fa-download " href="{{ url_for('download_all') }}">&nbsp;Download Gender Inclusive Files</a></li>
+         <li ><a class="fa fa-check " href="{{ url_for('test_files') }}">&nbsp;Test All Downloaded Files</a></li>
+    </ul>
+</nav>
+<div class=" content form">
+    <h5 style="text-align:center;font-weight:bold"> We are developing this Python Application to test articles in agricultural advisory for gender inclusiveness.</h5>
+        <h4>Upload a new articles to test</h4>
+
+
+        <form action="" method=post enctype=multipart/form-data>
+          <p><input type=file name=file>
+             <input type=submit value="Upload and Test Article">
+        </form>
+    <h4>Article is Predicted to Be:</h4>
+    {# get_flashed_messages() is auto sent to the template with the flash() call #}
+      {% for mess in get_flashed_messages()  %}
+        {% if "NOT" not in mess %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+            {{mess}} &nbsp;&nbsp; check file in <a class="fa fa-download" href="{{ url_for('download_all') }}">&nbsp; &nbsp;Gender Inclusive Files</a>
+        </div>
+          {% else %}
+           <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            {{mess}} check file  &nbsp;  <a href="/return-non-inclusive-files/{{ mess.rpartition('-')[0] }}">The file</a>
+          {% endif %}
+         </div>
+      {% endfor %}
+</div>
+    <hr>
+    <div style="paddign:20px;">
+         {% for mess in get_flashed_messages()  %}
+        {% if mess %}
+        <h4>Gender Expert Review</h4>
+        <b>The above Prediction is </b> <br/>
+        <form action="{{ url_for('accept_review') }}" method="post" enctype="multipart/form-data">
+         &nbsp; &nbsp;<input type="radio" name="review" value="Correct" />&nbsp; &nbsp;Correct <br/> <input type="radio" name="review" value="Not Correct" />Not Correct
+            <input type="hidden" name="msg" value="{{ mess }}">
+            <input name="filename" type="hidden" value="{{ mess.rpartition('-')[0] }}">
+            <br/>
+            <p style="align:center"> <input type=submit value="Submit Your Review"></p>
+        </form>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>

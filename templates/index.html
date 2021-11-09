@@ -1,0 +1,47 @@
+<!doctype html>
+<title>Agricultural Advisory Gender sensitivity Tester - home</title>
+<link href='https://fonts.googleapis.com/css family=Pacifico' rel= stylesheet type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+ <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<div class="content" style="padding-top:5px;">
+     <div style="text-align:center; float:left; width:6%">
+         <img src="{{ url_for('static', filename='images/aau_logo.png') }}" height="80" width="70">
+     </div>
+    <div style="text-align:center; float:right; width:13%">
+        <img src="{{ url_for('static', filename='images/ciat_logo.png') }}" height="80" width="120">
+    </div>
+
+    <div style="text-align:center; width:81%">
+  <h1 style="text-align:center;">Mining Scientific Literature on Agricultural Advisory for Gender Inclusiveness  </h1>
+    </div>
+
+<nav>
+    <ul>
+        <li ><a  class="fa fa-home" href="{{ url_for('index') }}">&nbsp;Home</a></li>
+        <li ><a class="fa fa-upload" href="{{ url_for('upload_file') }}">&nbsp;Upload and Test an Article</a></li>
+        <li ><a class="fa fa-download " href="{{ url_for('download_all') }}">&nbsp;Download Gender Inclusive Files</a></li>
+         <li ><a class="fa fa-check" href="{{ url_for('test_files') }}">&nbsp;Test All Downloaded Files</a></li>
+    </ul>
+</nav>
+<h4 style="text-align:center;"> We are developing this Python Application to test articles in agricultural advisory for gender inclusiveness.</h4>
+<div class="content post">
+    <p style="line-height:1.5em; text-align:justify">
+        CIAT and its partners aimed to assess the extent of gender considerations in agricultural advisory contents within the scope of climate, fertilizer and related inputs and crop disease, through taking and analyzing scientific literature associated with agricultural advisory content, covering the Sub-Saharan Africa.
+
+
+    </p>
+     <p style="line-height:1.5em; text-align:justify">
+        Hence, as part of the overarching problem, in this assignment, members of the coalition of the willing are engaged in reviewing literature, organizing the reviewed documents, cleaning, pre-processing data, building text mining models,  prototyping and evaluating the extent to which the models can be used to identify gender blind and sensitive documents.
+    </p>
+  <p style="line-height:1.5em; text-align:justify">
+      Moreover, the size of advisory contents to be extracted from agricultural scientific publication databases and policy guidelines is growing from time to time which makes the task of assessing the extent of gender consideration using a manual approach challenging. Agricultural researchers produce large collections of textual information such as scientific papers, news stories, and blog posts and policy documents. Due to the large number of textual documents, validating how much these texts consider gender by employing a gender expert is tiresome and sometimes impossible.
+      Thus, an attempt is made to employ Artificial intelligence based text mining techniques in order to identify scientific publication that consider gender.
+  </p>
+
+
+</div>
+</div>
