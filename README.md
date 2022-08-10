@@ -1,4 +1,4 @@
-# agadvisorygender
+# Ag advisory gender inclusiveness
 Alliance Bioversity-International Center for Tropical Agriculture (CIAT)-CGIAR suported the development of this project
 Searched and retrieved 800+ relevant literature on Ag Advisory from 6 international scientific publications databases and applied machine learning techniques to 
 determine if the publications were gender inclusive or otherwise. web-based tool was develop in python to assist gender experts 
